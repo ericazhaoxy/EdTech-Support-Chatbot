@@ -1,7 +1,5 @@
 # EdTech Support Chatbot: Rules • Intent Classifier • LLMs
 
----
-
 ## Overview
 
 A portfolio project that conceptualizes and develops **three chatbot architectures** from easy to advanced — rule-based, NLP intent classification, and LLM-based—to answer common EdTech questions for students and faculty, and compares tradeoffs in **speed, maintainability, accuracy, and conversational quality**.
