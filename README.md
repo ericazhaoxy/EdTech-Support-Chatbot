@@ -1,6 +1,4 @@
-# EdTech Support Chatbot —
-
-# 3 Approaches: Rules • Intent Classifier • LLM
+# EdTech Support Chatbot: Rules • Intent Classifier • LLMs
 
 A portfolio project that explores **three chatbot architectures** for common EdTech / student-support questions (e.g., admissions, enrollment, fees, campus services), and compares their tradeoffs in **speed, maintainability, accuracy, and conversational quality**.
 
