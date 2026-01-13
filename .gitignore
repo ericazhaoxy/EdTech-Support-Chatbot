@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.venv/
+venv/
+ENV/
+.env
+
+# model / artifacts
+*.pkl
+*.h5
+*.pt
+*.bin
+artifacts/
