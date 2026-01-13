@@ -1,6 +1,10 @@
 # EdTech Support Chatbot: Rules • Intent Classifier • LLMs
 
-A portfolio project that explores **three chatbot architectures** for common EdTech / student-support questions (e.g., admissions, enrollment, fees, campus services), and compares their tradeoffs in **speed, maintainability, accuracy, and conversational quality**.
+---
+
+## Overview
+
+A portfolio project that conceptualizes and develops **three chatbot architectures** from easy to advanced — rule-based, NLP intent classification, and LLM-based—to answer common EdTech questions for students and faculty, and compares tradeoffs in **speed, maintainability, accuracy, and conversational quality**.
 
 This repo intentionally keeps the project **modular**:
 
