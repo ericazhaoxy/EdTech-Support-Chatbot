@@ -4,9 +4,9 @@ A portfolio project that explores **three chatbot architectures** for common EdT
 
 This repo intentionally keeps the project **modular**:
 
-✅ **Rule-based** chatbot (NLTK) — fast, deterministic baseline
-✅ **Intent classifier** (Keras + NLP preprocessing) — scalable structured responses
-✅ **LLM prototype** (Transformers) — natural language generation + QA-style answers
+- ✅ **Rule-based** chatbot (NLTK) — fast, deterministic baseline
+- ✅ **Intent classifier** (Keras + NLP preprocessing) — scalable structured responses
+- ✅ **LLM prototype** (Transformers) — natural language generation + QA-style answers
 
 > Why this is useful: In real support systems, you rarely choose a single approach forever. A strong implementation starts with a reliable baseline, then evolves toward ML/LLM as requirements grow.
 
@@ -85,17 +85,20 @@ Files:
 Best for: reliable FAQs, predictable flows, and strict control over answers.
 
 How it works:
-• Regex-like pattern matching using nltk.chat.util.Chat
-• Fallback reply when no pattern matches
+
+- Regex-like pattern matching using nltk.chat.util.Chat
+- Fallback reply when no pattern matches
 
 Tradeoffs:
-✅ Fast, deterministic, easy to debug
-❌ Limited generalization beyond defined patterns
+
+- ✅ Fast, deterministic, easy to debug
+- ❌ Limited generalization beyond defined patterns
 
 Improvements:
-• Add normalization (lowercasing, punctuation removal) before matching
-• Expand pattern coverage for high-frequency queries
-• Group patterns by topic (admissions / fees / campus services)
+
+- Add normalization (lowercasing, punctuation removal) before matching
+- Expand pattern coverage for high-frequency queries
+- Group patterns by topic (admissions / fees / campus services)
 
 ---
 
@@ -103,7 +106,11 @@ Improvements:
 
 Best for: scaling beyond handcrafted patterns with a maintainable, data-driven pipeline.
 
-Typical flow: 1. Normalize + tokenize text 2. Vectorize (Bag-of-Words / TF-IDF / embeddings) 3. Train a multi-class classifier on patterns → tag 4. Select a response from the predicted intent’s responses
+Typical flow:
+
+- 1. Normalize + tokenize text
+- 2. Vectorize (Bag-of-Words / TF-IDF / embeddings)
+- 3. Train a multi-class classifier on patterns → tag 4. Select a response from the predicted intent’s responses
 
 How to run:
 
@@ -113,13 +120,15 @@ python -m src.intent_classifier.infer
 ```
 
 Tradeoffs:
-✅ More scalable than rules; easier to maintain at larger intent sets
-❌ Requires training + evaluation; sensitive to data quality
+
+- ✅ More scalable than rules; easier to maintain at larger intent sets
+- ❌ Requires training + evaluation; sensitive to data quality
 
 Improvements:
-• Add evaluation: accuracy, confusion matrix, per-intent metrics
-• Balance classes + deduplicate patterns in intents.json
-• Upgrade classifier to a lightweight transformer encoder (sentence embeddings + classifier head)
+
+- Add evaluation: accuracy, confusion matrix, per-intent metrics
+- Balance classes + deduplicate patterns in intents.json
+- Upgrade classifier to a lightweight transformer encoder (sentence embeddings + classifier head)
 
 ---
 
@@ -128,12 +137,14 @@ Improvements:
 Best for: natural responses and open-ended questions, with guardrails.
 
 What was explored:
-• GPT-2 style text generation
-• BERT-style question answering (extractive QA)
+
+- GPT-2 style text generation
+- BERT-style question answering (extractive QA)
 
 Notes:
-• Transformer models can be heavy (download size + memory). Running in Colab or a machine with sufficient RAM is recommended.
-• LLMs may generate incorrect or inappropriate responses. Implementing safety checks and guardrails is crucial for production use.
+
+- Transformer models can be heavy (download size + memory). Running in Colab or a machine with sufficient RAM is recommended.
+- LLMs may generate incorrect or inappropriate responses. Implementing safety checks and guardrails is crucial for production use.
 
 How to run:
 
@@ -143,32 +154,36 @@ python -m src.llm.bert_qa
 ```
 
 Modern upgrade path (2026-ready):
-• Replace GPT-2 with a modern LLM (e.g., GPT-4/5-class or instruction-tuned open models)
-• Add RAG over a vetted FAQ knowledge base (citations)
-• Add safety filters + refusal policy for unsupported questions
-• Add latency/cost controls (routing + caching + fallback to rules)
+
+- Replace GPT-2 with a modern LLM (e.g., GPT-4/5-class or instruction-tuned open models)
+- Add RAG over a vetted FAQ knowledge base (citations)
+- Add safety filters + refusal policy for unsupported questions
+- Add latency/cost controls (routing + caching + fallback to rules)
 
 ---
 
 ## Roadmap / Improvements
 
 Short-term (portfolio polish)
-• Add screenshots/GIF demo to assets/screenshots/
-• Add intents_edtech_clean.json (remove placeholders, normalize categories)
-• Add a simple evaluation script for the intent classifier
-• Add CLI entrypoint (python -m src.rule_based.cli)
+
+- Add screenshots/GIF demo to assets/screenshots/
+- Add intents_edtech_clean.json (remove placeholders, normalize categories)
+- Add a simple evaluation script for the intent classifier
+- Add CLI entrypoint (python -m src.rule_based.cli)
 
 Engineering upgrades
-• Streamlit web UI + deploy
-• RAG over curated FAQ docs (vector store + citations)
-• Better routing: rules → classifier → LLM fallback
-• Observability: logs, analytics, and error tracking
+
+- Streamlit web UI + deploy
+- RAG over curated FAQ docs (vector store + citations)
+- Better routing: rules → classifier → LLM fallback
+- Observability: logs, analytics, and error tracking
 
 ---
 
 ## Notes on Responsible Use
 
 This is a learning/portfolio project. For real student-support deployments:
-• Avoid exposing private student data
-• Restrict sensitive actions (account/financial operations) to verified channels
-• Add security, audit logging, and human handoff for high-risk cases
+
+- Avoid exposing private student data
+- Restrict sensitive actions (account/financial operations) to verified channels
+- Add security, audit logging, and human handoff for high-risk cases
